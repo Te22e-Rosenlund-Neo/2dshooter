@@ -5,6 +5,7 @@ using UnityEngine;
 public class boltcontroller : MonoBehaviour
 {
    public float shotspeed = 2;
+
     void Update()
     {
  
@@ -16,4 +17,8 @@ public class boltcontroller : MonoBehaviour
     
 
 }
+private void OnTriggerEnter2D(Collider2D collider){
+        Destroy(this.gameObject);
+    }
+
 }

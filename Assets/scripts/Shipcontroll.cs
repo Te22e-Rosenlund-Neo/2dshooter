@@ -40,7 +40,6 @@ GameObject bolt;
 
 /*
 -list of things to have to make this a game 
--skjuta skott
 -fiender
 -liv
 -score
