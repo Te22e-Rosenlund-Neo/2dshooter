@@ -30,7 +30,7 @@ public class Shipcontroll : MonoBehaviour
         if(Mathf.Abs(transform.position.x) > 9.9f){
             transform.Translate(-movementx);
         }
-        if(Math.Abs(transform.position.y) > 4.9f){
+        if(Math.Abs(transform.position.y) > 4.5f){
             transform.Translate(-movementy);
         }
 
