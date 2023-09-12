@@ -6,13 +6,8 @@ using UnityEngine;
 
 public class Shipcontroll : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    [SerializeField]
+GameObject bolt;
     void Update()
     {
 
@@ -33,8 +28,24 @@ public class Shipcontroll : MonoBehaviour
         if(Math.Abs(transform.position.y) > 4.5f){
             transform.Translate(-movementy);
         }
+        if(Input.GetKeyDown(KeyCode.Space)){
+            Instantiate(bolt, this.transform.position, Quaternion.identity);
+        }
 
 
-        
+
     }
 }
+
+
+/*
+-list of things to have to make this a game 
+-skjuta skott
+-fiender
+-liv
+-score
+-menu
+-shot barriers (kills the shot instance when outside play area)
+
+
+*/
