@@ -8,6 +8,7 @@ public class enemygridmovement : MonoBehaviour
     [SerializeField] float enemyoffsetX = 1f;
     [SerializeField] float enemyoffsetY = 1f;
     [SerializeField] GameObject enemy;
+    [SerializeField] string BorderTag; 
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,11 @@ public class enemygridmovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+
+
+
+
     }
 
     void Spawnnew(){
@@ -31,4 +36,18 @@ public class enemygridmovement : MonoBehaviour
             }
         }
     }
+
+/*private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (BorderTag == collider.tag)
+        {
+            collider.gameObject.GetComponent<enemyscript>().Movenemy();
+            Debug.Log("I hit the side");
+        }
     }
+
+*/
+
+
+    }
+

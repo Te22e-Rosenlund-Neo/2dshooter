@@ -9,7 +9,8 @@ public class enemyscript : MonoBehaviour
 [SerializeField] GameObject bolt;
 [SerializeField] GameObject explosion;
 [SerializeField] string BoltTag;
-int Ehealth = 6;
+[SerializeField] string BorderTag;
+int Ehealth = 2;
 
 public int enemymovementspeed = 5;
 
@@ -20,13 +21,11 @@ public double shottimer;
       
  Vector2 enemymovement = new Vector2(enemymovementspeed,0) * Time.deltaTime;
 
-        transform.Translate(enemymovement);
-        if(Mathf.Abs(transform.position.x) >= 9.5){
-            enemymovementspeed *=-1;
-        }
-        
+       transform.Translate(enemymovement);
+
+
         shottimer++;
-        if (shottimer >= Random.Range(500, 2500))
+        if (shottimer >= Random.Range(1000, 2000))
         {
             shottimer = 0;
             Instantiate(bolt, transform.position, Quaternion.identity);
@@ -51,7 +50,22 @@ public double shottimer;
                 //collider.gameObject.GetComponent<boltcontroller>().Boltdestroy();  other version of sams ugly code
             }
         }
+        if (BorderTag == collider.tag)
+        {
+            MoveEnemy();
+            Debug.Log("I hit the side");
+        }
     }
+
+    public void MoveEnemy(){
+        enemymovementspeed *= -1;
+    Vector2 enemymovement = new Vector2(0,-1);
+    transform.Translate(enemymovement);
+    }
+    
+
+
+
 }
 
 
