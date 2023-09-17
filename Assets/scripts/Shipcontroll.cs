@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Shipcontroll : MonoBehaviour
 {
 [SerializeField] GameObject bolt;
 [SerializeField] GameObject explosion;
 [SerializeField] string EnemyBoltTag;
- int playerhealth= 6;
+
+[SerializeField] Image[] livesUI;
+ int playerhealth= 5;
 
 
 
@@ -49,8 +51,17 @@ public class Shipcontroll : MonoBehaviour
             if (EnemyBoltTag == collider.tag){
             playerhealth--;
            Destroy(collider.gameObject);
+           for(int i=0; i<livesUI.Length;i++){
+            if(i<playerhealth){
+                livesUI[i].enabled = true;
+            }
+            else{
+                livesUI[i].enabled = false;
+            }
+           }
+
         }   
-            if(playerhealth == 0){
+            if(playerhealth <= 0){
             Destroy(this.gameObject);
             Instantiate(explosion, transform.position, Quaternion.identity);;
             Debug.Break();
@@ -65,7 +76,7 @@ public class Shipcontroll : MonoBehaviour
 
 /*
 -list of things to have to make this a game 
--fiender
+-flip enemy bolt
 -liv
 -score
 -menu
