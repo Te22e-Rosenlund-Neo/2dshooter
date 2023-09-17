@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 212731004487972468}
   - component: {fileID: 95663737370079626}
   - component: {fileID: 2305748018027731453}
-  - component: {fileID: -702205055658675674}
+  - component: {fileID: -2477476208474044770}
   m_Layer: 0
-  m_Name: Bolt
-  m_TagString: bolt
+  m_Name: boltenemy
+  m_TagString: boltenemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,10 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c87c1f712781d541a364cb9009b6ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotspeed: 10
-  enemyTag: enemy
+  shotspeed: -10
+  enemyTag: player
   userTag: 
---- !u!50 &-702205055658675674
+--- !u!50 &-2477476208474044770
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0

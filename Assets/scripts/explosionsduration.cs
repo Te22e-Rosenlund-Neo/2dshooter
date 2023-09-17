@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class explosionsduration : MonoBehaviour
 {
+int duration;
 
-    int duration;
     void Update()
     {
       duration++;
@@ -13,6 +13,5 @@ public class explosionsduration : MonoBehaviour
         if(duration == 60){
             Destroy(this.gameObject);
         }
-
     }
 }

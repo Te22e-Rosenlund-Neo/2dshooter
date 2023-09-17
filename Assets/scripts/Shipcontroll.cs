@@ -6,8 +6,13 @@ using UnityEngine;
 
 public class Shipcontroll : MonoBehaviour
 {
-    [SerializeField]
-GameObject bolt;
+[SerializeField] GameObject bolt;
+[SerializeField] GameObject explosion;
+[SerializeField] string EnemyBoltTag;
+ int playerhealth= 6;
+
+
+
     void Update()
     {
 
@@ -31,11 +36,31 @@ GameObject bolt;
         if(Input.GetKeyDown(KeyCode.Space)){
             Instantiate(bolt, this.transform.position, Quaternion.identity);
         }
+        
 
+        
+
+      
 
 
     }
+ private void OnTriggerEnter2D(Collider2D collider)
+    {
+            if (EnemyBoltTag == collider.tag){
+            playerhealth--;
+           Destroy(collider.gameObject);
+        }   
+            if(playerhealth == 0){
+            Destroy(this.gameObject);
+            Instantiate(explosion, transform.position, Quaternion.identity);;
+            Debug.Break();
+         }
 }
+}
+
+
+
+
 
 
 /*
@@ -44,7 +69,6 @@ GameObject bolt;
 -liv
 -score
 -menu
--shot barriers (kills the shot instance when outside play area)
 
 
 */
