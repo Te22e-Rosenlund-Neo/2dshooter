@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class Shipcontroll : MonoBehaviour
 {
 [SerializeField] GameObject bolt;
@@ -13,7 +14,7 @@ public class Shipcontroll : MonoBehaviour
 [SerializeField] Image[] livesUI;
  int playerhealth= 5;
 
-
+[SerializeField] int playerammo;
 
     void Update()
     {
@@ -36,7 +37,10 @@ public class Shipcontroll : MonoBehaviour
             transform.Translate(-movementy);
         }
         if(Input.GetKeyDown(KeyCode.Space)){
+            if(playerammo>0){
             Instantiate(bolt, this.transform.position, Quaternion.identity);
+            playerammo--;
+            }
         }
         
 
@@ -51,6 +55,7 @@ public class Shipcontroll : MonoBehaviour
             if (EnemyBoltTag == collider.tag){
             playerhealth--;
            Destroy(collider.gameObject);
+
            for(int i=0; i<livesUI.Length;i++){
             if(i<playerhealth){
                 livesUI[i].enabled = true;
@@ -63,8 +68,8 @@ public class Shipcontroll : MonoBehaviour
         }   
             if(playerhealth <= 0){
             Destroy(this.gameObject);
-            Instantiate(explosion, transform.position, Quaternion.identity);;
-            Debug.Break();
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            SceneManager.LoadScene(0);
          }
 }
 }
@@ -82,4 +87,23 @@ public class Shipcontroll : MonoBehaviour
 -menu
 
 
+*/
+
+/*_ timer function
+
+[seralizefield]
+Float TimeBetweenShots = 0.5f;
+float TimeSinceLastShot = 0;
+
+void update(){
+
+TimeSinceLastShot += Time.deltaTime;
+
+if(Input.GetAxisRaw("Fire1") > 0 && TimeSinceLastShot == TimeBetweenShots){
+    shoot();
+    TimeSinceLastShot = 0;
+}
+
+
+}
 */

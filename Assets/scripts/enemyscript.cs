@@ -5,34 +5,39 @@ using UnityEngine;
 
 public class enemyscript : MonoBehaviour
 {
+    
+    public static int count = 0;
 
-[SerializeField] GameObject bolt;
-[SerializeField] GameObject explosion;
-[SerializeField] string BoltTag;
-[SerializeField] string BorderTag;
-int Ehealth = 2;
+    [SerializeField] GameObject bolt;
+    [SerializeField] GameObject explosion;
+    [SerializeField] string BoltTag;
+    [SerializeField] string BorderTag;
+    int Ehealth = 2;
 
-public int enemymovementspeed = 5;
+    public int enemymovementspeed = 5;
 
-public double shottimer;
+    public double shottimer;
 
+
+    private void Start()
+    {
+        count++;
+        InvokeRepeating("shoot", Random.Range(4, 10), 3f);
+    }
     void Update()
     {
-      
- Vector2 enemymovement = new Vector2(enemymovementspeed,0) * Time.deltaTime;
 
-       transform.Translate(enemymovement);
+        Vector2 enemymovement = new Vector2(enemymovementspeed, 0) * Time.deltaTime;
 
-
-        shottimer++;
-        if (shottimer >= Random.Range(1000, 2000))
-        {
-            shottimer = 0;
-            Instantiate(bolt, transform.position, Quaternion.identity);
-        }
+        transform.Translate(enemymovement);
 
 
-         
+
+    }
+
+    void shoot()
+    {
+        Instantiate(bolt, transform.position, Quaternion.Euler(0, 0, 180));
     }
 
 
@@ -41,28 +46,33 @@ public double shottimer;
         if (BoltTag == collider.tag)
         {
             Ehealth--;
-             Destroy(collider.gameObject);
+            Destroy(collider.gameObject);
             if (Ehealth == 0)
             {
                 Destroy(this.gameObject);
                 Instantiate(explosion, transform.position, Quaternion.identity);
-               
+                Die();
                 //collider.gameObject.GetComponent<boltcontroller>().Boltdestroy();  other version of sams ugly code
             }
         }
         if (BorderTag == collider.tag)
         {
             MoveEnemy();
-            Debug.Log("I hit the side");
         }
     }
 
-    public void MoveEnemy(){
+    public void MoveEnemy()
+    {
         enemymovementspeed *= -1;
-    Vector2 enemymovement = new Vector2(0,-1);
-    transform.Translate(enemymovement);
+        Vector2 enemymovement = new Vector2(0, -1);
+        transform.Translate(enemymovement);
     }
-    
+
+    private void Die()
+    {
+        count--;
+    }
+
 
 
 

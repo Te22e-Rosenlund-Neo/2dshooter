@@ -169,6 +169,8 @@ MonoBehaviour:
   bolt: {fileID: 1287502262990996, guid: 4dd15c7fe51711c48ba135fef149bbf8, type: 3}
   explosion: {fileID: 1052859802758272, guid: 7e5c5b1c1b18764459c69710c7dc4adc, type: 3}
   EnemyBoltTag: boltenemy
+  livesUI: []
+  playerammo: 80
 --- !u!1 &7449306348867640236
 GameObject:
   m_ObjectHideFlags: 0
