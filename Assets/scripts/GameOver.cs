@@ -3,33 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Threading;
 public class GameOver : MonoBehaviour
 {
-    public TextMeshProUGUI text;
-    private int counter;
+public TextMeshProUGUI gameendtext;
+public static int ammodifference;
+
     void Start()
     {
-   text = FindObjectOfType<TextMeshProUGUI>();
+ 
     }
 
 
     void Update()
     {
-         counter++;
- if(counter == 1080){
-     SceneManager.LoadScene(0);
-}
+    if(enemyscript.count <= 0){
 
-
-
-
- if(enemyscript.count <= 0){
-            text.text="You win!";
-
-        }
-
-if(Shipcontroll.playerhealth <= 0){
-    text.text="Game over!";
-}
+         SceneManager.LoadScene(1);
+        ammodifference +=10;
+   
+    }   
+    if(Shipcontroll.playerhealth<=0 || Shipcontroll.playerammodisplay <= 0){
+        gameendtext.text =$"Gameover! \n Score: {enemyscript.score} ";
+  
     }
+}
 }

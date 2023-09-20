@@ -10,16 +10,22 @@ using UnityEngine.UI;
 public class menu : MonoBehaviour
 {
     public TextMeshProUGUI BulletText;
+    public static int scene=0;
     
 void Start(){
-     BulletText = FindObjectOfType<TextMeshProUGUI>();
+
+  
 }
 void Update(){
     BulletText.text = Convert.ToString(Shipcontroll.playerammodisplay);
-}
 
+
+
+
+}
      public void OnPlayButton(){
-        SceneManager.LoadScene(1);
+        SceneManager.LoadSceneAsync(1);
+        scene = 1;
      }
 
      public void OnQuitButton(){

@@ -1,11 +1,14 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class enemyscript : MonoBehaviour
 {
-    
+    public static int score;
     public static int count = 0;
 
     [SerializeField] GameObject bolt;
@@ -13,14 +16,15 @@ public class enemyscript : MonoBehaviour
     [SerializeField] string BoltTag;
     [SerializeField] string BorderTag;
     int Ehealth = 2;
-
+    public  AudioClip sfx1;
     public int enemymovementspeed = 5;
 
-    public double shottimer;
+   
 
 
     private void Start()
     {
+       
         count++;
         InvokeRepeating("shoot", Random.Range(4, 10), 3f);
     }
@@ -46,12 +50,18 @@ public class enemyscript : MonoBehaviour
         if (BoltTag == collider.tag)
         {
             Ehealth--;
+            score+=50;
             Destroy(collider.gameObject);
             if (Ehealth == 0)
             {
+                SfxDeath();
                 Destroy(this.gameObject);
                 Instantiate(explosion, transform.position, Quaternion.identity);
                 Die();
+               
+                
+                
+                
                 //collider.gameObject.GetComponent<boltcontroller>().Boltdestroy();  other version of sams ugly code
             }
         }
@@ -72,6 +82,10 @@ public class enemyscript : MonoBehaviour
     {
         count--;
     }
+
+public void SfxDeath(){
+      AudioSource.PlayClipAtPoint(sfx1, new Vector2(0, 0));
+}
 
 
 

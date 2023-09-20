@@ -17,9 +17,16 @@ public class Shipcontroll : MonoBehaviour
 [SerializeField] public static int playerammodisplay;
 [SerializeField] public int playerammo = 80;
 
-
+    void Start(){
+        if(GameOver.ammodifference < 44){
+        playerammo = 80-GameOver.ammodifference;
+    }else{
+        playerammo = 38;
+    }
+    }
     void Update()
     {
+        
         playerammodisplay = playerammo;
        float speed = 6; //rutor per sekund
 
@@ -69,7 +76,6 @@ public class Shipcontroll : MonoBehaviour
             if(playerhealth <= 0){
             Destroy(this.gameObject);
             Instantiate(explosion, transform.position, Quaternion.identity);
-            SceneManager.LoadScene(2);
          }
 }
 }
@@ -82,7 +88,7 @@ public class Shipcontroll : MonoBehaviour
 /*
 -list of things to have to make this a game 
 -score
-
+-add animations in start menu
 
 
 */

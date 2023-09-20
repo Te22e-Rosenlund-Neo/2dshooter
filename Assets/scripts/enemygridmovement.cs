@@ -13,31 +13,34 @@ public class enemygridmovement : MonoBehaviour
 
     public float enemynumb;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        Spawnnew();
-    
-
+        if(menu.scene == 1){
+        Spawnnew1();
+    }
+        if(menu.scene == 2){
+            spawnnew2();
+        }
 
     }
 
     // Update is called once per frame
     void Update()
     {           
-        if(enemyscript.count <= 0){
-            SceneManager.LoadScene(2);
-            Time.timeScale = 0f;
-        }
+  
 
     }
 
-    public void Spawnnew(){
+    public void Spawnnew1(){
         for(int i=0; i<3; i++){
 
             for(int j=0; j<6; j++){
                 Instantiate(enemy, new Vector2(transform.position.x + (enemyoffsetX*j), transform.position.y - (enemyoffsetY*i)), Quaternion.identity);
             }
         }
+    }
+    public void spawnnew2(){
+
     }
 
 
