@@ -12,13 +12,15 @@ public class Shipcontroll : MonoBehaviour
 [SerializeField] string EnemyBoltTag;
 
 [SerializeField] Image[] livesUI;
- int playerhealth= 5;
+ public static int playerhealth= 5;
 
-[SerializeField] int playerammo;
+[SerializeField] public static int playerammodisplay;
+[SerializeField] public int playerammo = 80;
+
 
     void Update()
     {
-
+        playerammodisplay = playerammo;
        float speed = 6; //rutor per sekund
 
         float moveX = Input.GetAxisRaw("Horizontal");
@@ -36,11 +38,9 @@ public class Shipcontroll : MonoBehaviour
         if(Math.Abs(transform.position.y) > 4.5f){
             transform.Translate(-movementy);
         }
-        if(Input.GetKeyDown(KeyCode.Space)){
-            if(playerammo>0){
+        if(Input.GetKeyDown(KeyCode.Space) && playerammo>0){
             Instantiate(bolt, this.transform.position, Quaternion.identity);
             playerammo--;
-            }
         }
         
 
@@ -69,7 +69,7 @@ public class Shipcontroll : MonoBehaviour
             if(playerhealth <= 0){
             Destroy(this.gameObject);
             Instantiate(explosion, transform.position, Quaternion.identity);
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(2);
          }
 }
 }
@@ -81,10 +81,8 @@ public class Shipcontroll : MonoBehaviour
 
 /*
 -list of things to have to make this a game 
--flip enemy bolt
--liv
 -score
--menu
+
 
 
 */

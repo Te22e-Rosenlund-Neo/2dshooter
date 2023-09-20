@@ -23,11 +23,11 @@ public class enemygridmovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {           
         if(enemyscript.count <= 0){
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(2);
+            Time.timeScale = 0f;
         }
-
 
     }
 
