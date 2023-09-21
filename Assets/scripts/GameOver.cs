@@ -8,7 +8,6 @@ public class GameOver : MonoBehaviour
 {
 public TextMeshProUGUI gameendtext;
 public static int ammodifference;
-public static int healthchange;
     void Start()
     {
  
@@ -21,7 +20,6 @@ public static int healthchange;
 
          SceneManager.LoadScene(1);
         ammodifference +=10;
-        healthchange+=1;
     }   
 
     if(Shipcontroll.playerhealth<=0 || Shipcontroll.playerammodisplay <= 0){

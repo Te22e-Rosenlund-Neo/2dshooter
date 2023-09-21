@@ -27,9 +27,6 @@ public class Shipcontroll : MonoBehaviour
     }else{
         playerammo = 38;
     }
-        if(playerhealth > 1){
-            playerhealth = 5 - GameOver.healthchange;
-        }
 
 
     }
@@ -88,30 +85,3 @@ public class Shipcontroll : MonoBehaviour
 
 
 
-
-/*
--list of things to have to make this a game 
--score
--add animations in start menu
-
-
-*/
-
-/*_ timer function
-
-[seralizefield]
-Float TimeBetweenShots = 0.5f;
-float TimeSinceLastShot = 0;
-
-void update(){
-
-TimeSinceLastShot += Time.deltaTime;
-
-if(Input.GetAxisRaw("Fire1") > 0 && TimeSinceLastShot == TimeBetweenShots){
-    shoot();
-    TimeSinceLastShot = 0;
-}
-
-
-}
-*/
