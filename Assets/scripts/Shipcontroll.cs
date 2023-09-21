@@ -14,15 +14,24 @@ public class Shipcontroll : MonoBehaviour
 [SerializeField] Image[] livesUI;
  public static int playerhealth= 5;
 
+
 [SerializeField] public static int playerammodisplay;
 [SerializeField] public int playerammo = 80;
 
+
+
     void Start(){
+
         if(GameOver.ammodifference < 44){
         playerammo = 80-GameOver.ammodifference;
     }else{
         playerammo = 38;
     }
+        if(playerhealth > 1){
+            playerhealth = 5 - GameOver.healthchange;
+        }
+
+
     }
     void Update()
     {
@@ -31,20 +40,15 @@ public class Shipcontroll : MonoBehaviour
        float speed = 6; //rutor per sekund
 
         float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
 
         Vector2 movementx = new Vector2(speed,0) * moveX * Time.deltaTime;
-        Vector2 movementy = new Vector2(0, speed) * moveY * Time.deltaTime;
         
         transform.Translate(movementx); 
-        transform.Translate(movementy);
 
         if(Mathf.Abs(transform.position.x) > 9.9f){
             transform.Translate(-movementx);
         }
-        if(Math.Abs(transform.position.y) > 4.5f){
-            transform.Translate(-movementy);
-        }
+       
         if(Input.GetKeyDown(KeyCode.Space) && playerammo>0){
             Instantiate(bolt, this.transform.position, Quaternion.identity);
             playerammo--;

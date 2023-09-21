@@ -8,7 +8,7 @@ public class GameOver : MonoBehaviour
 {
 public TextMeshProUGUI gameendtext;
 public static int ammodifference;
-
+public static int healthchange;
     void Start()
     {
  
@@ -21,8 +21,9 @@ public static int ammodifference;
 
          SceneManager.LoadScene(1);
         ammodifference +=10;
-   
+        healthchange+=1;
     }   
+
     if(Shipcontroll.playerhealth<=0 || Shipcontroll.playerammodisplay <= 0){
         gameendtext.text =$"Gameover! \n Score: {enemyscript.score} ";
   
