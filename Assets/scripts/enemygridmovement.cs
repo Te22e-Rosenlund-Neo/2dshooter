@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Search;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class enemygridmovement : MonoBehaviour
 {
     [SerializeField] float enemyoffsetX = 1f;
@@ -18,9 +17,8 @@ public class enemygridmovement : MonoBehaviour
         if(menu.scene == 1){
         Spawnnew1();
     }
-        if(menu.scene == 2){
-            spawnnew2();
-        }
+    
+
 
     }
 
@@ -38,9 +36,6 @@ public class enemygridmovement : MonoBehaviour
                 Instantiate(enemy, new Vector2(transform.position.x + (enemyoffsetX*j), transform.position.y - (enemyoffsetY*i)), Quaternion.identity);
             }
         }
-    }
-    public void spawnnew2(){
-
     }
 
 

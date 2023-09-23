@@ -18,10 +18,12 @@ public class Shipcontroll : MonoBehaviour
 [SerializeField] public static int playerammodisplay;
 [SerializeField] public int playerammo = 80;
 
-
+void Awake(){
+    Shipcontroll.playerhealth = 5;
+}
 
     void Start(){
-
+        GameOver.TempDisablegameover = true;
         if(GameOver.ammodifference < 44){
         playerammo = 80-GameOver.ammodifference;
     }else{
